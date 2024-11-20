@@ -12,7 +12,6 @@ namespace vrcosc_magicchatbox.UI.Dialogs
     /// </summary>
     public partial class ManualPulsoidAuth : Window
     {
-        static PulsoidOAuthHandler oauthHandler;
         public ManualPulsoidAuth()
         {
             InitializeComponent();
@@ -74,37 +73,10 @@ namespace vrcosc_magicchatbox.UI.Dialogs
 
 
 
-        private async void Connect_Click(object sender, RoutedEventArgs e)
-        {
-            oauthHandler = PulsoidOAuthHandler.Instance;
-
-            bool isValidToken = await oauthHandler.ValidateTokenAsync(Token.Password);
-
-            if (isValidToken)
-            {
-                ViewModel.Instance.PulsoidAccessTokenOAuth = Token.Password;
-                ViewModel.Instance.PulsoidAuthConnected = true;
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Invalid token, please try again.", "Invalid token", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
-
         private void Token_PasswordChanged(object sender, RoutedEventArgs e)
         {
             string password = Token.Password;
 
-            if (IsValidGuid(password))
-            {
-                Connect.IsEnabled = true;
-            }
-            else
-            {
-                Connect.IsEnabled = false;
-            }
         }
 
         private bool IsValidGuid(string str)

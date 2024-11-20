@@ -119,31 +119,6 @@
                 </TextBlock>
 
                 <Button
-                    x:Name="Connect"
-                    Width="100"
-                    Height="40"
-                    Margin="350,134,250,25"
-                    Padding="5"
-                    Click="Connect_Click"
-                    IsEnabled="False"
-                    Style="{StaticResource Status_Button_style}">
-                    <Button.ContentTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <Image
-                                    Height="20"
-                                    Margin="0,0,3,0"
-                                    Source="/Img/Icons/Pulsoid.png" />
-                                <TextBlock
-                                    Margin="0,-2,5,0"
-                                    VerticalAlignment="Center"
-                                    FontSize="15"
-                                    Text="Connect" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </Button.ContentTemplate>
-                </Button>
-                <Button
                     x:Name="ClearAndPaste"
                     Height="40"
                     Margin="284,134,355,25"

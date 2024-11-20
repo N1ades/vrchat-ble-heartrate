@@ -1465,7 +1465,7 @@
                                 Foreground="#BDAEE2"
                                 IsChecked="{Binding Settings_HeartRate, Mode=TwoWay}"
                                 Style="{StaticResource ExpandCollapseToggleButtonStyle}"
-                                Tag="Pulsoid heart rate options"
+                                Tag="Heart rate options"
                                 TextOptions.TextRenderingMode="ClearType" />
 
                             <TextBlock
@@ -1490,247 +1490,10 @@
                             Visibility="{Binding Settings_HeartRate, Converter={StaticResource InverseBoolToHiddenConverter}, UpdateSourceTrigger=PropertyChanged}">
                             <StackPanel>
                                 <Border
-                                    Width="500"
-                                    Height="auto"
-                                    Margin="0,0,10,15"
-                                    HorizontalAlignment="Left"
-                                    CornerRadius="5">
-                                    <Border.Background>
-                                        <LinearGradientBrush StartPoint="0.3,0" EndPoint="0.5,1">
-                                            <GradientStop Color="#05B4A8" />
-                                            <GradientStop Offset="1" Color="#403670" />
-                                        </LinearGradientBrush>
-                                    </Border.Background>
-                                    <Border.Effect>
-                                        <DropShadowEffect
-                                            BlurRadius="25"
-                                            Direction="-90"
-                                            Opacity="0.9"
-                                            RenderingBias="Performance"
-                                            ShadowDepth="5"
-                                            Color="#05B4A8" />
-                                    </Border.Effect>
-                                    <Grid Margin="3">
-
-                                        <StackPanel Orientation="Vertical">
-                                            <StackPanel Orientation="Horizontal">
-                                                <TextBlock
-                                                    Width="auto"
-                                                    Padding="5,5,0,0"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Top"
-                                                    Background="Transparent"
-                                                    FontFamily="Albert Sans Thin"
-                                                    FontSize="20"
-                                                    FontWeight="Bold"
-                                                    Foreground="Gold"
-                                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                    Text="15% OFF"
-                                                    TextWrapping="Wrap">
-                                                    <TextBlock.Effect>
-                                                        <DropShadowEffect
-                                                            BlurRadius="20"
-                                                            Opacity="1"
-                                                            RenderingBias="Performance"
-                                                            ShadowDepth="0"
-                                                            Color="BlueViolet" />
-                                                    </TextBlock.Effect>
-                                                </TextBlock>
-                                                <TextBlock
-                                                    Width="auto"
-                                                    Padding="5,5,0,0"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Top"
-                                                    Background="Transparent"
-                                                    FontFamily="Albert Sans Thin"
-                                                    FontSize="20"
-                                                    FontWeight="Bold"
-                                                    Foreground="#FF240E55"
-                                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                    Text="every month on your"
-                                                    TextWrapping="Wrap">
-                                                    <TextBlock.Effect>
-                                                        <DropShadowEffect
-                                                            BlurRadius="20"
-                                                            Opacity="1"
-                                                            RenderingBias="Performance"
-                                                            ShadowDepth="0"
-                                                            Color="Purple" />
-                                                    </TextBlock.Effect>
-                                                </TextBlock>
-                                                <TextBlock
-                                                    Width="auto"
-                                                    Padding="5,5,0,0"
-                                                    HorizontalAlignment="Stretch"
-                                                    VerticalAlignment="Top"
-                                                    Background="Transparent"
-                                                    FontFamily="Albert Sans Thin"
-                                                    FontSize="20"
-                                                    FontWeight="Bold"
-                                                    Foreground="Gold"
-                                                    RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                    Text="BRO PLAN"
-                                                    TextWrapping="Wrap">
-                                                    <TextBlock.Effect>
-                                                        <DropShadowEffect
-                                                            BlurRadius="20"
-                                                            Opacity="1"
-                                                            RenderingBias="Performance"
-                                                            ShadowDepth="0"
-                                                            Color="Gold" />
-                                                    </TextBlock.Effect>
-                                                </TextBlock>
-                                            </StackPanel>
-                                            <TextBlock
-                                                Width="auto"
-                                                Padding="7,0,0,0"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Top"
-                                                Background="Transparent"
-                                                FontFamily="Albert Sans Thin"
-                                                FontSize="13"
-                                                FontStyle="Italic"
-                                                FontWeight="Medium"
-                                                Foreground="DarkGoldenrod"
-                                                RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                                Text="Discount applies to new subscriptions only (cancel possible)"
-                                                TextWrapping="Wrap">
-                                                <TextBlock.Effect>
-                                                    <DropShadowEffect
-                                                        BlurRadius="7"
-                                                        Opacity="1"
-                                                        RenderingBias="Performance"
-                                                        ShadowDepth="0"
-                                                        Color="Purple" />
-                                                </TextBlock.Effect>
-                                            </TextBlock>
-
-
-                                        </StackPanel>
-                                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                                            <Button
-                                                Name="PulsoidLearnMoreAboutDiscount_btn"
-                                                Height="auto"
-                                                Margin="2,0,0,0"
-                                                VerticalAlignment="Stretch"
-                                                Click="PulsoidLearnMoreAboutDiscount_btn_Click"
-                                                Opacity="0.8"
-                                                Style="{DynamicResource Status_Button_style}">
-                                                <Image
-                                                    Width="18"
-                                                    Margin="2"
-                                                    RenderOptions.BitmapScalingMode="HighQuality"
-                                                    Source="/Img/Icons/Info_ico.png" />
-                                            </Button>
-                                            <Button
-                                                Name="ApplyLinkPulsoid_btn"
-                                                Width="auto"
-                                                Height="auto"
-                                                Margin="2,0,0,0"
-                                                HorizontalAlignment="Right"
-                                                VerticalAlignment="Stretch"
-                                                Click="ApplyLinkPulsoid_btn_Click"
-                                                Opacity="0.8"
-                                                Style="{DynamicResource Status_Button_style}">
-                                                <Image
-                                                    Width="25"
-                                                    Margin="2"
-                                                    RenderOptions.BitmapScalingMode="HighQuality"
-                                                    Source="/Img/Icons/Apply_ico.png" />
-                                            </Button>
-                                        </StackPanel>
-
-
-
-
-
-
-
-
-                                    </Grid>
-
-                                </Border>
-                                <Border
                                     Margin="0,0,0,5"
                                     Background="#FF3B3054"
                                     CornerRadius="5,0,0,5">
                                     <StackPanel Orientation="Horizontal">
-                                        <Button
-                                            x:Name="ConnectWithPulsoid"
-                                            Width="auto"
-                                            Height="30"
-                                            Padding="5"
-                                            Click="ConnectWithPulsoid_Click"
-                                            Style="{StaticResource Status_Button_style}"
-                                            Visibility="{Binding PulsoidAuthConnected, Converter={StaticResource InverseBoolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
-                                            <Button.ContentTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Image
-                                                            Width="21"
-                                                            Height="18"
-                                                            Margin="0,0,3,0"
-                                                            Source="/Img/Icons/Pulsoid.png" />
-                                                        <TextBlock
-                                                            Margin="0,-2,5,0"
-                                                            VerticalAlignment="Center"
-                                                            FontSize="14"
-                                                            Text="Connect with Pulsoid" />
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </Button.ContentTemplate>
-                                        </Button>
-                                        <Button
-                                            x:Name="ConnectedWithPulsoid"
-                                            Width="auto"
-                                            Height="30"
-                                            Padding="5"
-                                            d:Visibility="Visible"
-                                            Click="ConnectWithPulsoid_Click"
-                                            Style="{StaticResource Status_Button_style}"
-                                            Visibility="{Binding PulsoidAuthConnected, Converter={StaticResource InverseBoolToHiddenConverter}, UpdateSourceTrigger=PropertyChanged}">
-                                            <Button.ContentTemplate>
-                                                <DataTemplate>
-                                                    <StackPanel Orientation="Horizontal">
-                                                        <Image
-                                                            Width="15"
-                                                            Height="15"
-                                                            Margin="2,0,5,0"
-                                                            VerticalAlignment="Center"
-                                                            Source="/Img/Icons/yes.png" />
-                                                        <TextBlock
-                                                            Margin="0,-2,5,0"
-                                                            VerticalAlignment="Center"
-                                                            FontSize="14"
-                                                            Text="Connected with Pulsoid" />
-                                                    </StackPanel>
-                                                </DataTemplate>
-                                            </Button.ContentTemplate>
-                                        </Button>
-                                        <Button
-                                            x:Name="DisconnectPulsoid"
-                                            Grid.Row="0"
-                                            Grid.Column="1"
-                                            Width="20"
-                                            Height="30"
-                                            Margin="-5,0,0,0"
-                                            HorizontalAlignment="Right"
-                                            VerticalAlignment="Center"
-                                            d:Visibility="Visible"
-                                            Background="#8A0000"
-                                            BorderThickness="0"
-                                            Click="DisconnectPulsoid_Click"
-                                            Cursor="Hand"
-                                            Style="{DynamicResource DisconnectPulsoid}"
-                                            Visibility="{Binding PulsoidAuthConnected, Converter={StaticResource InverseBoolToHiddenConverter}, UpdateSourceTrigger=PropertyChanged}">
-                                            <Grid>
-                                                <Image
-                                                    Width="15"
-                                                    Height="15"
-                                                    RenderOptions.BitmapScalingMode="Linear"
-                                                    Source="/Img/Icons/Cross_v1_ico.png" />
-                                            </Grid>
-                                        </Button>
                                         <Border Visibility="{Binding HeartRateConnector.PulsoidAccessError, Converter={StaticResource InverseBoolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
                                             <TextBlock
                                                 Margin="5,0,0,0"
@@ -1803,7 +1566,7 @@
                                             FontFamily="Albert Sans Thin"
                                             FontSize="20"
                                             Foreground="#FF9983AD"
-                                            Text="Pulsoid ˢᵗᵃᵗˢ" />
+                                            Text="Heart rate ˢᵗᵃᵗˢ" />
 
                                         <TextBlock
                                             Width="auto"
@@ -1828,7 +1591,7 @@
                                             IsChecked="{Binding HeartRateConnector.Settings.PulsoidStatsEnabled, Mode=TwoWay}"
                                             Style="{DynamicResource SettingsCheckbox}"
                                             Unchecked="Update_Click">
-                                            Enable Pulsoid ˢᵗᵃᵗˢ
+                                            Enable heart rate ˢᵗᵃᵗˢ
                                         </CheckBox>
 
                                         <StackPanel Visibility="{Binding HeartRateConnector.Settings.PulsoidStatsEnabled, Converter={StaticResource InverseBoolToHiddenConverter}, UpdateSourceTrigger=PropertyChanged}">
@@ -2463,25 +2226,6 @@
 
                                         </StackPanel>
 
-                                    </StackPanel>
-                                </Border>
-                                <Border
-                                    Margin="0,0,0,5"
-                                    Background="#FF3B3054"
-                                    CornerRadius="5,0,0,5"
-                                    Opacity="0.8"
-                                    Visibility="{Binding PulsoidAuthConnected, Converter={StaticResource InverseBoolToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}">
-                                    <StackPanel Margin="5">
-                                        <TextBlock
-                                            x:Name="ManualPulsoidAuthBtn"
-                                            Padding="0,0,9,0"
-                                            VerticalAlignment="Center"
-                                            Cursor="Hand"
-                                            FontFamily="Albert Sans Thin"
-                                            FontSize="15"
-                                            Foreground="#FF9983AD"
-                                            MouseUp="ManualPulsoidAuthBtn_MouseUp"
-                                            Text="Manual web authorization" />
                                     </StackPanel>
                                 </Border>
                             </StackPanel>
@@ -8577,7 +8321,7 @@
                                         FontSize="20"
                                         Foreground="White"
                                         RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                        Text="Pulsoid Heart Rate"
+                                        Text="Heart Rate"
                                         TextWrapping="Wrap" />
                                     <ToggleButton
                                         Width="60"
@@ -8629,45 +8373,6 @@
                                                 <GradientStop Offset="1" Color="#FF302573" />
                                             </LinearGradientBrush>
                                         </Border.Background>
-                                        <StackPanel Orientation="Horizontal">
-                                            <TextBlock
-                                                Padding="5,0,0,0"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                FontSize="15"
-                                                FontWeight="DemiBold"
-                                                Foreground="AliceBlue"
-                                                Opacity="0.9"
-                                                Text="-15%">
-                                                <TextBlock.Effect>
-                                                    <DropShadowEffect
-                                                        BlurRadius="5"
-                                                        Direction="0"
-                                                        Opacity="0.5"
-                                                        ShadowDepth="0"
-                                                        Color="Black" />
-                                                </TextBlock.Effect>
-                                            </TextBlock>
-                                            <TextBlock
-                                                Padding="1,0,3,0"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Top"
-                                                FontSize="10"
-                                                FontWeight="DemiBold"
-                                                Foreground="AliceBlue"
-                                                Opacity="0.8"
-                                                Text="always">
-                                                <TextBlock.Effect>
-                                                    <DropShadowEffect
-                                                        BlurRadius="5"
-                                                        Direction="0"
-                                                        Opacity="0.5"
-                                                        ShadowDepth="0"
-                                                        Color="Black" />
-                                                </TextBlock.Effect>
-                                            </TextBlock>
-                                        </StackPanel>
-
 
                                         <Border.Effect>
                                             <DropShadowEffect
@@ -8724,7 +8429,7 @@
                                     FontFamily="Comfortaa Light"
                                     FontSize="13"
                                     RenderOptions.BitmapScalingMode="NearestNeighbor"
-                                    Text="With this integration, you can display your heart rate in real-time. Only compatible with Pulsoid"
+                                    Text="With this integration, you can display your heart rate in real-time. Compatible with Bluetooth devices"
                                     TextWrapping="Wrap">
                                     <TextBlock.Foreground>
                                         <RadialGradientBrush>

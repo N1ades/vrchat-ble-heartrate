@@ -84,8 +84,6 @@ namespace vrcosc_magicchatbox.Classes.DataAndSecurity
 
         }
 
-
-
         public static void AddMediaLink(List<string> Uncomplete)
         {
             if (ViewModel.Instance.IntgrScanMediaLink)
