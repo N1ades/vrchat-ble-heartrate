@@ -18,7 +18,7 @@ using System.Net.WebSockets;
 using System.Text;
 using vrcosc_magicchatbox.ViewModels.Models;
 using HeartRate;
-
+using System.Net.Sockets;
 
 namespace vrcosc_magicchatbox.Classes.Modules
 {
@@ -140,8 +140,6 @@ namespace vrcosc_magicchatbox.Classes.Modules
         [ObservableProperty]
         bool trendIndicatorBehindStats = true;
 
-
-
         public void SaveSettings()
         {
             var settingsJson = JsonConvert.SerializeObject(this, Formatting.Indented);
@@ -193,9 +191,6 @@ namespace vrcosc_magicchatbox.Classes.Modules
                 return new PulsoidModuleSettings();
             }
         }
-
-
-
     }
 
     public enum StatisticsTimeRange
@@ -476,16 +471,6 @@ namespace vrcosc_magicchatbox.Classes.Modules
 
         private void Service_HeartRateUpdatedCore(HeartRateReading reading)
         {
-            //if (_udpsender == null)
-            //{
-            //    _udpsender = new SharpOSC.UDPSender("127.0.0.1", _settings.VRChatPort);
-            //}
-
-            //_log?.Reading(reading);
-            //_ibi?.Reading(reading);
-            //_udp?.Reading(reading);
-            //_hrfile?.Reading(reading);
-
             var bpm = reading.BeatsPerMinute;
             var status = reading.Status;
 
@@ -494,9 +479,6 @@ namespace vrcosc_magicchatbox.Classes.Modules
 
             if (reading.IsError || isDisconnected)
             {
-                //_udpsender.Send(new SharpOSC.OscMessage("/avatar/parameters/" + _settings.HRIntAddress, 0));
-                //_udpsender.Send(new SharpOSC.OscMessage("/avatar/parameters/" + _settings.HRFloatAddress, 0.0f));
-
                 HeartRateFromSocket = 0;
                 HeartRateLastUpdate = DateTime.Now;
             }
@@ -506,14 +488,44 @@ namespace vrcosc_magicchatbox.Classes.Modules
                 HeartRateLastUpdate = DateTime.Now;
 
                 Logging.WriteException(new Exception(reading.Error), MSGBox: false);
-                // float heartRateRangeFactor =
-                //    (bpm <= _settings.HeartRateRangeMin) ? 0f
-                //  : (bpm >= _settings.HeartRateRangeMax) ? 1f
-                //  : (bpm - _settings.HeartRateRangeMin) / (float)(_settings.HeartRateRangeMax - _settings.HeartRateRangeMin);
-                // _udpsender.Send(new SharpOSC.OscMessage("/avatar/parameters/" + _settings.HRIntAddress, bpm));
-                // _udpsender.Send(new SharpOSC.OscMessage("/avatar/parameters/" + _settings.HRFloatAddress, heartRateRangeFactor));
             }
 
+        }
+
+        static async Task SendBPM(int bpm)
+        {
+            string url = "http://localhost:8080";
+
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    // Convert the integer to a string and create the content to send (plain text)
+                    StringContent content = new StringContent(bpm.ToString(), Encoding.UTF8, "text/plain");
+
+                    // Send the POST request
+                    HttpResponseMessage response = await client.PostAsync(url, content);
+
+                    // Ensure the response was successful
+                    response.EnsureSuccessStatusCode();
+
+                    // Read and display the response content
+                    string responseBody = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine($"Response: {responseBody}");
+                }
+                catch (SocketException)
+                {
+                    // Do nothing if the request fails
+                }
+                catch (HttpRequestException)
+                {
+                    // Do nothing if the request fails
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+            }
         }
 
         private int ParseHeartRateFromMessage(string message)
@@ -641,6 +653,7 @@ namespace vrcosc_magicchatbox.Classes.Modules
             if (HeartRate != heartRate)
             {
                 HeartRate = heartRate;
+                _ = SendBPM(heartRate);
             }
         }
 
@@ -659,12 +672,7 @@ namespace vrcosc_magicchatbox.Classes.Modules
                 displayTextBuilder.Append(Settings.HeartRateIcon);
             }
 
-            bool showCurrentHeartRate = true;
-
-            if (Settings.PulsoidStatsEnabled)
-            {
-                showCurrentHeartRate = !Settings.HideCurrentHeartRate;
-            }
+            bool showCurrentHeartRate = !Settings.HideCurrentHeartRate;
 
             if (showCurrentHeartRate)
             {
@@ -681,58 +689,6 @@ namespace vrcosc_magicchatbox.Classes.Modules
                 displayTextBuilder.Append($" {Settings.HeartRateTrendIndicator}");
             }
 
-            if (Settings.PulsoidStatsEnabled)
-            {
-
-                List<string> statsList = new List<string>();
-
-                if (PulsoidStatistics != null)
-                {
-                    if (Settings.ShowCalories)
-                    {
-                        statsList.Add($"{PulsoidStatistics.calories_burned_in_kcal} kcal");
-                    }
-                    if (Settings.ShowAverageHeartRate)
-                    {
-                        statsList.Add($"{PulsoidStatistics.average_beats_per_minute} Avg");
-                    }
-                    if (Settings.ShowMaximumHeartRate)
-                    {
-                        statsList.Add($"{PulsoidStatistics.maximum_beats_per_minute} Max");
-                    }
-                    if (Settings.ShowMinimumHeartRate)
-                    {
-                        statsList.Add($"{PulsoidStatistics.minimum_beats_per_minute} Min");
-                    }
-                    if (Settings.ShowDuration)
-                    {
-                        TimeSpan duration = TimeSpan.FromSeconds(PulsoidStatistics.streamed_duration_in_seconds);
-                        string formattedDuration = duration.ToString(@"hh\:mm\:ss");
-
-                        if (Settings.ShowStatsTimeRange)
-                        {
-                            string timeRangeDescription = Settings.SelectedStatisticsTimeRange.GetDescription();
-                            statsList.Add($"duration over {timeRangeDescription} {formattedDuration} ");
-                        }
-                        else
-                        {
-                            statsList.Add($"duration {formattedDuration}");
-                        }
-                    }
-
-                    for (int i = 0; i < statsList.Count; i++)
-                    {
-                        statsList[i] = DataController.TransformToSuperscript(statsList[i]);
-                    }
-                }
-
-                if (statsList.Count > 0)
-                {
-                    string statslist = string.Join("|", statsList);
-                    displayTextBuilder.Append($" {statslist}");
-                }
-
-            }
 
             if (Settings.ShowHeartRateTrendIndicator && Settings.TrendIndicatorBehindStats)
             {
