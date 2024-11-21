@@ -41,10 +41,6 @@ If you need any further help `setting up` the program hit up our `Discord Server
 > - 🥈 Badge Display `(Upcoming V2)`
 > - 🎫 MCB Rank Display `(Upcoming V2)`
 
-
-> [!IMPORTANT]
-> **Heart Rate Feature** needs an official `Pulsoid Member` Subscription.
-
 ## Support
 
 If you need more help, feel free to click the button below:
@@ -61,6 +57,5 @@ If you need more help, feel free to click the button below:
 - [Rating](information/Rating.md) – Our User Ratings
 - [Contact](https://discord.gg/magicchatbox) – Create an Ticket here
 - [Funding](information/Funding.md) – Our Communitys Advocates
-- [Pulsoid CoS](information/PulsoidTOS.md) – Terms of Service for Pulsoid Integration
 - [Documentation](https://github.com/BoiHanny/vrcosc-magicchatbox/wiki) – Detailed guides and manuals
 ****
