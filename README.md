@@ -61,5 +61,5 @@ If you need more help, feel free to click the button below:
 - [Contact](https://discord.gg/magicchatbox) – Create an Ticket here
 - [Funding](information/Funding.md) – Our Communitys Advocates
 - [Documentation](https://github.com/BoiHanny/vrcosc-magicchatbox/wiki) – Detailed guides and manuals
-- [Heart Rate Integration Code Reference](https://github.com/jlennox/HeartRate)
+- [Jlennox Github](https://github.com/jlennox/HeartRate) - Heart Rate Integration Reference
 ****
