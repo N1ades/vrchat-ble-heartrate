@@ -162,7 +162,7 @@
                         FontFamily="Albert Sans Thin"
                         FontSize="12"
                         Foreground="#FF9AA1FF"
-                        Text="By BoiHanny">
+                        Text="Fork By N1ades">
                         <TextBlock.Effect>
                             <DropShadowEffect
                                 BlurRadius="15"

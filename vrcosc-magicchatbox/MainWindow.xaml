@@ -6,7 +6,7 @@
     xmlns:local="clr-namespace:vrcosc_magicchatbox.Classes"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="clr-namespace:vrcosc_magicchatbox.ViewModels"
-    Title="MagicChatbox by BoiHanny"
+    Title="MagicChatbox fork by N1ades"
     Width="900"
     Height="675"
     MinWidth="1000"

@@ -177,8 +177,8 @@ namespace vrcosc_magicchatbox.DataAndSecurity
         {
             try
             {
-                string urlLatest = "https://api.github.com/repos/BoiHanny/vrcosc-magicchatbox/releases/latest";
-                string urlPreRelease = "https://api.github.com/repos/BoiHanny/vrcosc-magicchatbox/releases";
+                string urlLatest = "https://api.github.com/repos/N1ades/vrcosc-magicchatbox/releases/latest";
+                string urlPreRelease = "https://api.github.com/repos/N1ades/vrcosc-magicchatbox/releases";
 
                 bool isWithinRateLimit = await CheckRateLimit();
 

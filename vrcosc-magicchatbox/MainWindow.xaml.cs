@@ -570,13 +570,13 @@ namespace vrcosc_magicchatbox
         private void Favbutton_Click(object sender, RoutedEventArgs e) { ViewModel.SaveStatusList(); }
 
         private void Github_Click(object sender, RoutedEventArgs e)
-        { Process.Start("explorer", "https://github.com/BoiHanny/vrcosc-magicchatbox"); }
+        { Process.Start("explorer", "https://github.com/N1ades/vrcosc-magicchatbox"); }
 
         private void GitHubChanges_MouseUp(object sender, MouseButtonEventArgs e)
         {
             if (ViewModel.Instance.tagURL == null)
             {
-                Process.Start("explorer", "http://github.com/BoiHanny/vrcosc-magicchatbox/releases");
+                Process.Start("explorer", "http://github.com/N1ades/vrcosc-magicchatbox/releases");
             }
             else
             {
@@ -589,7 +589,7 @@ namespace vrcosc_magicchatbox
         {
             Process.Start(
                 "explorer",
-                "https://github.com/BoiHanny/vrcosc-magicchatbox/wiki/%F0%9F%A9%B5-Heart-Rate");
+                "https://github.com/N1ades/vrcosc-magicchatbox/wiki/%F0%9F%A9%B5-Heart-Rate");
         }
 
 
@@ -597,14 +597,14 @@ namespace vrcosc_magicchatbox
         {
             Process.Start(
                 "explorer",
-                "https://github.com/BoiHanny/vrcosc-magicchatbox/wiki/%F0%9F%8E%BC-Music-Display");
+                "https://github.com/N1ades/vrcosc-magicchatbox/wiki/%F0%9F%8E%BC-Music-Display");
         }
 
         private void LearnMoreAboutTTSbtn_MouseUp(object sender, MouseButtonEventArgs e)
         {
             Process.Start(
                 "explorer",
-                "https://github.com/BoiHanny/vrcosc-magicchatbox/wiki/Play-TTS-Output-of-MagicChatbox-to-Main-Audio-Device-and-Microphone-in-VRChat-Using-VB-Audio-Cable-(Simple-Setup)");
+                "https://github.com/N1ades/vrcosc-magicchatbox/wiki/Play-TTS-Output-of-MagicChatbox-to-Main-Audio-Device-and-Microphone-in-VRChat-Using-VB-Audio-Cable-(Simple-Setup)");
         }
 
         private async Task ManualUpdateCheckAsync()
@@ -725,7 +725,7 @@ namespace vrcosc_magicchatbox
             }
             else
             {
-                Process.Start("explorer", "http://github.com/BoiHanny/vrcosc-magicchatbox/releases");
+                Process.Start("explorer", "http://github.com/N1ades/vrcosc-magicchatbox/releases");
             }
         }
 
@@ -1677,7 +1677,7 @@ namespace vrcosc_magicchatbox
         {
             Process.Start(new ProcessStartInfo
             {
-                FileName = "https://github.com/BoiHanny/vrcosc-magicchatbox/wiki/Unlock-a-15%25-Discount-on-Pulsoid's-BRO-Plan",
+                FileName = "https://github.com/N1ades/vrcosc-magicchatbox/wiki/Unlock-a-15%25-Discount-on-Pulsoid's-BRO-Plan",
                 UseShellExecute = true
             });
 

@@ -40,7 +40,7 @@ namespace vrcosc_magicchatbox.UI.Dialogs
         { Process.Start("explorer", "https://discord.gg/ZaSFwBfhvG"); }
 
         private void Github_Click(object sender, RoutedEventArgs e)
-        { Process.Start("explorer", "https://github.com/BoiHanny/vrcosc-magicchatbox/issues/new/choose"); }
+        { Process.Start("explorer", "https://github.com/N1ades/vrcosc-magicchatbox/issues/new/choose"); }
 
 
 
@@ -75,7 +75,7 @@ namespace vrcosc_magicchatbox.UI.Dialogs
             }
             else
             {
-                Process.Start("explorer", "http://github.com/BoiHanny/vrcosc-magicchatbox/releases");
+                Process.Start("explorer", "http://github.com/N1ades/vrcosc-magicchatbox/releases");
             }
         }
 
